@@ -1,17 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
+import { AuthContextProvider } from "./store/auth-context";
+
+import { initializeApp } from "firebase/app";
+
+import "./index.css";
+import App from "./App";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAkIMWUOMuFlhRIJVCRGwrThBcWTCZDc_s",
+  authDomain: "react-productivity-app-56f40.firebaseapp.com",
+  databaseURL:
+    "https://react-productivity-app-56f40-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "react-productivity-app-56f40",
+  storageBucket: "react-productivity-app-56f40.appspot.com",
+  messagingSenderId: "122096437014",
+  appId: "1:122096437014:web:ea2ebb0c8de74ac9d0b237",
+};
+initializeApp(firebaseConfig);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <AuthContextProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </AuthContextProvider>,
+  document.getElementById("root")
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
